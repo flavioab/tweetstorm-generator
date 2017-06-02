@@ -1,0 +1,7 @@
+.coverage
+.cache/
+__pycache__/
+*.pyc
+build/
+dist/
+tweetstorm_generator.egg-info/
