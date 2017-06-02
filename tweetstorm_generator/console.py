@@ -1,23 +1,18 @@
-import os.path as path
+import os.path
 
 from argparse import ArgumentParser
 
 
-def create_parser() -> ArgumentParser:
-    parser = ArgumentParser(description="Express yourself with more than 140 characters")
-    parser.add_argument("-f", "--file", type=str, help="Path of the file to be parsed", default=None)
-    parser.add_argument("-m", "--message", type=str, help="Message to be parsed.", default=None)
-    return parser
-
-
 def get_text_from_file(path: str) -> str:
-    if path.isfile(path):
+    if os.path.isfile(path):
         with open(path, 'r') as f:
             return f.read()
 
 
 def get_text() -> str:
-    parser = create_parser()
+    parser = ArgumentParser(description="Express yourself with more than 140 characters")
+    parser.add_argument("-f", "--file", type=str, help="Path of the file to be parsed", default=None)
+    parser.add_argument("-m", "--message", type=str, help="Message to be parsed.", default=None)
     args = parser.set_defaults(m=None, message=None, f=None, file=None)
     args = parser.parse_args()
 
